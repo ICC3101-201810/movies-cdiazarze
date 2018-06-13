@@ -19,6 +19,7 @@ namespace movies
         public event EventHandler<DataEventArgs> OnSearch;
         public event EventHandler<DataEventArgs> OnButtonHit;
         public event EventHandler<DataEventArgs> OnSelection;
+        public event EventHandler<DataEventArgs> OnAddCritica;
         public event EventHandler<DataEventArgs> OnClosingApp;
 
 
@@ -108,6 +109,20 @@ namespace movies
                     else DataArgs.person = listAfterButton.SelectedItem as Persona;
                     OnSelection(this, DataArgs);
                 }
+            }
+        }
+
+        private void buttonAddReview_Click(object sender, EventArgs e)
+        {
+            if (OnAddCritica != null)
+            {
+                if (!emisor.Text.Equals("") && !textoCritca.Text.Equals(""))
+                {
+                    DataArgs.emisor = emisor.Text;
+                    DataArgs.mensaje = textoCritca.Text;
+                    OnAddCritica(this, DataArgs);
+                }
+                else MessageBox.Show("ERROR: Debe completar los campos", "Error: Falta de informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -255,11 +270,59 @@ namespace movies
         public void CleanListProfile()
         {
             listProfile.Items.Clear();
+            
         }
         public void ShowPanelProfile()
         {
             panelProfile.Visible = true;
             panelAfterButton.Visible = false;
+        }
+
+        public void UpdateListCriticas<T>(List<T> list)
+        {
+            if (list.Count > 0)
+            {
+                foreach (T element in list)
+                {
+                    if (listReviews.Items.Count > 0 && listReviews.Items[0].Equals("No existen registros"))
+                    {
+                        listReviews.Items.Add(element);
+                        listReviews.Items.RemoveAt(0);
+                    }
+                    else
+                        listReviews.Items.Add(element);
+                }
+            }
+            else NoResultListCriticas();
+        }
+        public void NoResultListCriticas()
+        {
+            listReviews.Items.Add("No existen registros");
+        }
+        public void CleanListCriticas()
+        {
+            listReviews.Items.Clear();
+        }
+        public void CleanAddReview()
+        {
+            emisor.Clear();
+            textoCritca.Clear();
+        }
+        public void ShowListCriticas()
+        {
+            panelReview.Visible=true;
+        }
+        public void UnshowListCriticas()
+        {
+            panelReview.Visible = false;
+        }
+        public void shorterListProfile()
+        {
+            listProfile.Size= new System.Drawing.Size(956, 172);
+        }
+        public void largerListProfile()
+        {
+            listProfile.Size = new System.Drawing.Size(956, 298);
         }
 
 
@@ -296,6 +359,10 @@ namespace movies
             panelAfterButton.Visible = true;
             panelProfile.Visible = false;
             CleanListProfile();
+            CleanListCriticas();
+            CleanAddReview();
         }
+
+        
     }
 }

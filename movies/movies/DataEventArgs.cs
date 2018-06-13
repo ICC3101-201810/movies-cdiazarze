@@ -16,5 +16,7 @@ namespace movies
         public Pelicula movie { get; set; }
         public Persona person { get; set; }
         public Estudio studio { get; set; }
+        public String emisor { get; set; }
+        public String mensaje { get; set; }
     }
 }

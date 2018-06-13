@@ -38,19 +38,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.panelAfterButton = new System.Windows.Forms.Panel();
+            this.buttonBackSearch = new System.Windows.Forms.Button();
             this.listAfterButton = new System.Windows.Forms.ListBox();
             this.labelList = new System.Windows.Forms.Label();
-            this.buttonBackSearch = new System.Windows.Forms.Button();
             this.panelProfile = new System.Windows.Forms.Panel();
-            this.backListAfterButton = new System.Windows.Forms.Button();
-            this.listProfile = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.listProfileLabel = new System.Windows.Forms.Label();
+            this.panelReview = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textoCritca = new System.Windows.Forms.TextBox();
+            this.emisor = new System.Windows.Forms.TextBox();
+            this.buttonAddReview = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.listReviews = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.va1 = new System.Windows.Forms.Label();
             this.a1 = new System.Windows.Forms.Label();
             this.a2 = new System.Windows.Forms.Label();
             this.a3 = new System.Windows.Forms.Label();
-            this.va1 = new System.Windows.Forms.Label();
             this.va2 = new System.Windows.Forms.Label();
             this.va3 = new System.Windows.Forms.Label();
             this.a4 = new System.Windows.Forms.Label();
@@ -59,9 +64,15 @@
             this.va4 = new System.Windows.Forms.Label();
             this.va5 = new System.Windows.Forms.Label();
             this.va6 = new System.Windows.Forms.Label();
+            this.listProfileLabel = new System.Windows.Forms.Label();
+            this.backListAfterButton = new System.Windows.Forms.Button();
+            this.listProfile = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelSearch.SuspendLayout();
             this.panelAfterButton.SuspendLayout();
             this.panelProfile.SuspendLayout();
+            this.panelReview.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,15 +86,16 @@
             this.panelSearch.Controls.Add(this.buttonPeliculas);
             this.panelSearch.Controls.Add(this.label1);
             this.panelSearch.Controls.Add(this.searchBox);
+            this.panelSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSearch.Location = new System.Drawing.Point(0, 0);
             this.panelSearch.Margin = new System.Windows.Forms.Padding(4);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(993, 708);
+            this.panelSearch.Size = new System.Drawing.Size(1006, 721);
             this.panelSearch.TabIndex = 0;
             // 
             // buttonEstudio
             // 
-            this.buttonEstudio.Location = new System.Drawing.Point(704, 630);
+            this.buttonEstudio.Location = new System.Drawing.Point(703, 655);
             this.buttonEstudio.Name = "buttonEstudio";
             this.buttonEstudio.Size = new System.Drawing.Size(146, 41);
             this.buttonEstudio.TabIndex = 7;
@@ -104,7 +116,7 @@
             // 
             // buttonProductores
             // 
-            this.buttonProductores.Location = new System.Drawing.Point(551, 630);
+            this.buttonProductores.Location = new System.Drawing.Point(551, 655);
             this.buttonProductores.Name = "buttonProductores";
             this.buttonProductores.Size = new System.Drawing.Size(146, 41);
             this.buttonProductores.TabIndex = 5;
@@ -114,7 +126,7 @@
             // 
             // buttonDirectores
             // 
-            this.buttonDirectores.Location = new System.Drawing.Point(399, 630);
+            this.buttonDirectores.Location = new System.Drawing.Point(399, 655);
             this.buttonDirectores.Name = "buttonDirectores";
             this.buttonDirectores.Size = new System.Drawing.Size(146, 41);
             this.buttonDirectores.TabIndex = 4;
@@ -124,7 +136,7 @@
             // 
             // buttonActores
             // 
-            this.buttonActores.Location = new System.Drawing.Point(247, 630);
+            this.buttonActores.Location = new System.Drawing.Point(247, 655);
             this.buttonActores.Name = "buttonActores";
             this.buttonActores.Size = new System.Drawing.Size(146, 41);
             this.buttonActores.TabIndex = 3;
@@ -134,7 +146,7 @@
             // 
             // buttonPeliculas
             // 
-            this.buttonPeliculas.Location = new System.Drawing.Point(95, 630);
+            this.buttonPeliculas.Location = new System.Drawing.Point(95, 655);
             this.buttonPeliculas.Name = "buttonPeliculas";
             this.buttonPeliculas.Size = new System.Drawing.Size(146, 41);
             this.buttonPeliculas.TabIndex = 2;
@@ -166,11 +178,22 @@
             this.panelAfterButton.Controls.Add(this.buttonBackSearch);
             this.panelAfterButton.Controls.Add(this.listAfterButton);
             this.panelAfterButton.Controls.Add(this.labelList);
-            this.panelAfterButton.Location = new System.Drawing.Point(1019, 0);
+            this.panelAfterButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAfterButton.Location = new System.Drawing.Point(0, 0);
             this.panelAfterButton.Margin = new System.Windows.Forms.Padding(4);
             this.panelAfterButton.Name = "panelAfterButton";
-            this.panelAfterButton.Size = new System.Drawing.Size(993, 708);
+            this.panelAfterButton.Size = new System.Drawing.Size(1006, 721);
             this.panelAfterButton.TabIndex = 1;
+            // 
+            // buttonBackSearch
+            // 
+            this.buttonBackSearch.Location = new System.Drawing.Point(15, 655);
+            this.buttonBackSearch.Name = "buttonBackSearch";
+            this.buttonBackSearch.Size = new System.Drawing.Size(146, 41);
+            this.buttonBackSearch.TabIndex = 7;
+            this.buttonBackSearch.Text = "Volver";
+            this.buttonBackSearch.UseVisualStyleBackColor = true;
+            this.buttonBackSearch.Click += new System.EventHandler(this.buttonBackSearch_Click);
             // 
             // listAfterButton
             // 
@@ -194,69 +217,114 @@
             this.labelList.TabIndex = 1;
             this.labelList.Text = "Search";
             // 
-            // buttonBackSearch
-            // 
-            this.buttonBackSearch.Location = new System.Drawing.Point(15, 630);
-            this.buttonBackSearch.Name = "buttonBackSearch";
-            this.buttonBackSearch.Size = new System.Drawing.Size(146, 41);
-            this.buttonBackSearch.TabIndex = 7;
-            this.buttonBackSearch.Text = "Volver";
-            this.buttonBackSearch.UseVisualStyleBackColor = true;
-            this.buttonBackSearch.Click += new System.EventHandler(this.buttonBackSearch_Click);
-            // 
             // panelProfile
             // 
+            this.panelProfile.Controls.Add(this.panelReview);
             this.panelProfile.Controls.Add(this.tableLayoutPanel1);
             this.panelProfile.Controls.Add(this.listProfileLabel);
             this.panelProfile.Controls.Add(this.backListAfterButton);
             this.panelProfile.Controls.Add(this.listProfile);
             this.panelProfile.Controls.Add(this.label2);
-            this.panelProfile.Location = new System.Drawing.Point(2040, 0);
+            this.panelProfile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelProfile.Location = new System.Drawing.Point(0, 0);
             this.panelProfile.Margin = new System.Windows.Forms.Padding(4);
             this.panelProfile.Name = "panelProfile";
-            this.panelProfile.Size = new System.Drawing.Size(993, 708);
+            this.panelProfile.Size = new System.Drawing.Size(1006, 721);
             this.panelProfile.TabIndex = 8;
             // 
-            // backListAfterButton
+            // panelReview
             // 
-            this.backListAfterButton.Location = new System.Drawing.Point(15, 630);
-            this.backListAfterButton.Name = "backListAfterButton";
-            this.backListAfterButton.Size = new System.Drawing.Size(146, 41);
-            this.backListAfterButton.TabIndex = 7;
-            this.backListAfterButton.Text = "Volver";
-            this.backListAfterButton.UseVisualStyleBackColor = true;
-            this.backListAfterButton.Click += new System.EventHandler(this.backListAfterButton_Click);
+            this.panelReview.Controls.Add(this.groupBox1);
+            this.panelReview.Controls.Add(this.label3);
+            this.panelReview.Controls.Add(this.listReviews);
+            this.panelReview.Location = new System.Drawing.Point(3, 499);
+            this.panelReview.Name = "panelReview";
+            this.panelReview.Size = new System.Drawing.Size(977, 150);
+            this.panelReview.TabIndex = 15;
             // 
-            // listProfile
+            // groupBox1
             // 
-            this.listProfile.Font = new System.Drawing.Font("Calibri", 10F);
-            this.listProfile.FormattingEnabled = true;
-            this.listProfile.HorizontalScrollbar = true;
-            this.listProfile.ItemHeight = 21;
-            this.listProfile.Location = new System.Drawing.Point(15, 401);
-            this.listProfile.Name = "listProfile";
-            this.listProfile.Size = new System.Drawing.Size(956, 214);
-            this.listProfile.TabIndex = 6;
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.textoCritca);
+            this.groupBox1.Controls.Add(this.emisor);
+            this.groupBox1.Controls.Add(this.buttonAddReview);
+            this.groupBox1.Location = new System.Drawing.Point(515, 7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(453, 136);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Agregar Critica";
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 17);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Informacion";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 10F);
+            this.label5.Location = new System.Drawing.Point(9, 69);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 21);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Critica";
             // 
-            // listProfileLabel
+            // label4
             // 
-            this.listProfileLabel.AutoSize = true;
-            this.listProfileLabel.Location = new System.Drawing.Point(11, 364);
-            this.listProfileLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.listProfileLabel.Name = "listProfileLabel";
-            this.listProfileLabel.Size = new System.Drawing.Size(332, 24);
-            this.listProfileLabel.TabIndex = 8;
-            this.listProfileLabel.Text = "Personas que trabajaron en la pelicula";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 10F);
+            this.label4.Location = new System.Drawing.Point(9, 35);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 21);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Nombre";
+            // 
+            // textoCritca
+            // 
+            this.textoCritca.Font = new System.Drawing.Font("Calibri", 10F);
+            this.textoCritca.Location = new System.Drawing.Point(94, 61);
+            this.textoCritca.Name = "textoCritca";
+            this.textoCritca.Size = new System.Drawing.Size(340, 28);
+            this.textoCritca.TabIndex = 14;
+            // 
+            // emisor
+            // 
+            this.emisor.Font = new System.Drawing.Font("Calibri", 10F);
+            this.emisor.Location = new System.Drawing.Point(94, 27);
+            this.emisor.Name = "emisor";
+            this.emisor.Size = new System.Drawing.Size(340, 28);
+            this.emisor.TabIndex = 12;
+            // 
+            // buttonAddReview
+            // 
+            this.buttonAddReview.Font = new System.Drawing.Font("Calibri", 10F);
+            this.buttonAddReview.Location = new System.Drawing.Point(288, 95);
+            this.buttonAddReview.Name = "buttonAddReview";
+            this.buttonAddReview.Size = new System.Drawing.Size(146, 35);
+            this.buttonAddReview.TabIndex = 13;
+            this.buttonAddReview.Text = "Agregar Critica";
+            this.buttonAddReview.UseVisualStyleBackColor = true;
+            this.buttonAddReview.Click += new System.EventHandler(this.buttonAddReview_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 7);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 24);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Criticas";
+            // 
+            // listReviews
+            // 
+            this.listReviews.Font = new System.Drawing.Font("Calibri", 10F);
+            this.listReviews.FormattingEnabled = true;
+            this.listReviews.HorizontalScrollbar = true;
+            this.listReviews.ItemHeight = 21;
+            this.listReviews.Location = new System.Drawing.Point(12, 34);
+            this.listReviews.Name = "listReviews";
+            this.listReviews.Size = new System.Drawing.Size(486, 109);
+            this.listReviews.TabIndex = 15;
             // 
             // tableLayoutPanel1
             // 
@@ -284,14 +352,24 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(956, 295);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(956, 215);
             this.tableLayoutPanel1.TabIndex = 9;
+            // 
+            // va1
+            // 
+            this.va1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.va1.AutoSize = true;
+            this.va1.Location = new System.Drawing.Point(146, 23);
+            this.va1.Name = "va1";
+            this.va1.Size = new System.Drawing.Size(61, 24);
+            this.va1.TabIndex = 3;
+            this.va1.Text = "label4";
             // 
             // a1
             // 
             this.a1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.a1.AutoSize = true;
-            this.a1.Location = new System.Drawing.Point(3, 37);
+            this.a1.Location = new System.Drawing.Point(3, 23);
             this.a1.Name = "a1";
             this.a1.Size = new System.Drawing.Size(61, 24);
             this.a1.TabIndex = 0;
@@ -301,7 +379,7 @@
             // 
             this.a2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.a2.AutoSize = true;
-            this.a2.Location = new System.Drawing.Point(3, 135);
+            this.a2.Location = new System.Drawing.Point(3, 94);
             this.a2.Name = "a2";
             this.a2.Size = new System.Drawing.Size(61, 24);
             this.a2.TabIndex = 1;
@@ -311,27 +389,17 @@
             // 
             this.a3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.a3.AutoSize = true;
-            this.a3.Location = new System.Drawing.Point(3, 233);
+            this.a3.Location = new System.Drawing.Point(3, 166);
             this.a3.Name = "a3";
             this.a3.Size = new System.Drawing.Size(61, 24);
             this.a3.TabIndex = 2;
             this.a3.Text = "label4";
             // 
-            // va1
-            // 
-            this.va1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.va1.AutoSize = true;
-            this.va1.Location = new System.Drawing.Point(146, 37);
-            this.va1.Name = "va1";
-            this.va1.Size = new System.Drawing.Size(61, 24);
-            this.va1.TabIndex = 3;
-            this.va1.Text = "label4";
-            // 
             // va2
             // 
             this.va2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.va2.AutoSize = true;
-            this.va2.Location = new System.Drawing.Point(146, 135);
+            this.va2.Location = new System.Drawing.Point(146, 94);
             this.va2.Name = "va2";
             this.va2.Size = new System.Drawing.Size(61, 24);
             this.va2.TabIndex = 4;
@@ -341,7 +409,7 @@
             // 
             this.va3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.va3.AutoSize = true;
-            this.va3.Location = new System.Drawing.Point(146, 233);
+            this.va3.Location = new System.Drawing.Point(146, 166);
             this.va3.Name = "va3";
             this.va3.Size = new System.Drawing.Size(61, 24);
             this.va3.TabIndex = 5;
@@ -351,7 +419,7 @@
             // 
             this.a4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.a4.AutoSize = true;
-            this.a4.Location = new System.Drawing.Point(499, 37);
+            this.a4.Location = new System.Drawing.Point(499, 23);
             this.a4.Name = "a4";
             this.a4.Size = new System.Drawing.Size(61, 24);
             this.a4.TabIndex = 6;
@@ -361,7 +429,7 @@
             // 
             this.a5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.a5.AutoSize = true;
-            this.a5.Location = new System.Drawing.Point(499, 135);
+            this.a5.Location = new System.Drawing.Point(499, 94);
             this.a5.Name = "a5";
             this.a5.Size = new System.Drawing.Size(61, 24);
             this.a5.TabIndex = 7;
@@ -371,7 +439,7 @@
             // 
             this.a6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.a6.AutoSize = true;
-            this.a6.Location = new System.Drawing.Point(499, 233);
+            this.a6.Location = new System.Drawing.Point(499, 166);
             this.a6.Name = "a6";
             this.a6.Size = new System.Drawing.Size(61, 24);
             this.a6.TabIndex = 8;
@@ -381,7 +449,7 @@
             // 
             this.va4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.va4.AutoSize = true;
-            this.va4.Location = new System.Drawing.Point(642, 37);
+            this.va4.Location = new System.Drawing.Point(642, 23);
             this.va4.Name = "va4";
             this.va4.Size = new System.Drawing.Size(61, 24);
             this.va4.TabIndex = 9;
@@ -391,7 +459,7 @@
             // 
             this.va5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.va5.AutoSize = true;
-            this.va5.Location = new System.Drawing.Point(642, 135);
+            this.va5.Location = new System.Drawing.Point(642, 94);
             this.va5.Name = "va5";
             this.va5.Size = new System.Drawing.Size(61, 24);
             this.va5.TabIndex = 10;
@@ -401,17 +469,58 @@
             // 
             this.va6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.va6.AutoSize = true;
-            this.va6.Location = new System.Drawing.Point(642, 233);
+            this.va6.Location = new System.Drawing.Point(642, 166);
             this.va6.Name = "va6";
             this.va6.Size = new System.Drawing.Size(61, 24);
             this.va6.TabIndex = 11;
             this.va6.Text = "label4";
             // 
+            // listProfileLabel
+            // 
+            this.listProfileLabel.AutoSize = true;
+            this.listProfileLabel.Location = new System.Drawing.Point(11, 283);
+            this.listProfileLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.listProfileLabel.Name = "listProfileLabel";
+            this.listProfileLabel.Size = new System.Drawing.Size(332, 24);
+            this.listProfileLabel.TabIndex = 8;
+            this.listProfileLabel.Text = "Personas que trabajaron en la pelicula";
+            // 
+            // backListAfterButton
+            // 
+            this.backListAfterButton.Location = new System.Drawing.Point(15, 655);
+            this.backListAfterButton.Name = "backListAfterButton";
+            this.backListAfterButton.Size = new System.Drawing.Size(146, 41);
+            this.backListAfterButton.TabIndex = 7;
+            this.backListAfterButton.Text = "Volver";
+            this.backListAfterButton.UseVisualStyleBackColor = true;
+            this.backListAfterButton.Click += new System.EventHandler(this.backListAfterButton_Click);
+            // 
+            // listProfile
+            // 
+            this.listProfile.Font = new System.Drawing.Font("Calibri", 10F);
+            this.listProfile.FormattingEnabled = true;
+            this.listProfile.HorizontalScrollbar = true;
+            this.listProfile.ItemHeight = 21;
+            this.listProfile.Location = new System.Drawing.Point(15, 319);
+            this.listProfile.Name = "listProfile";
+            this.listProfile.Size = new System.Drawing.Size(956, 172);
+            this.listProfile.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 17);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Informacion";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(3204, 721);
+            this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.panelProfile);
             this.Controls.Add(this.panelAfterButton);
             this.Controls.Add(this.panelSearch);
@@ -426,6 +535,10 @@
             this.panelAfterButton.PerformLayout();
             this.panelProfile.ResumeLayout(false);
             this.panelProfile.PerformLayout();
+            this.panelReview.ResumeLayout(false);
+            this.panelReview.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -465,6 +578,15 @@
         private System.Windows.Forms.Label va4;
         private System.Windows.Forms.Label va5;
         private System.Windows.Forms.Label va6;
+        private System.Windows.Forms.Panel panelReview;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textoCritca;
+        private System.Windows.Forms.TextBox emisor;
+        private System.Windows.Forms.Button buttonAddReview;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox listReviews;
     }
 }
 

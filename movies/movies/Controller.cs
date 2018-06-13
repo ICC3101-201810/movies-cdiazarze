@@ -18,6 +18,8 @@ namespace movies
         List<Pelicula> peliculas;
         List<PeliculaActor> peliculaActores;
         List<PeliculaProductor> peliculaProductores;
+        List<Critica> criticas;
+
         Form1 View;
         public Controller(Form1 views)
         {
@@ -26,12 +28,14 @@ namespace movies
             peliculas = new List<Pelicula>();
             peliculaActores = new List<PeliculaActor>();
             peliculaProductores = new List<PeliculaProductor>();
+            criticas = new List<Critica>();
             View = views;
 
             View.OnClosingApp += SaveDataBeforeClosing_OnClosingApp;
             View.OnSearch += SearchItems_OnSearch;
             View.OnButtonHit += LoadElements_OnButtonHit;
             View.OnSelection += LoadProfile_OnSelection;
+            View.OnAddCritica += AddCritica_OnAddCritica;
 
 
             if (!LoadData())
@@ -43,6 +47,7 @@ namespace movies
                 Persona.count = personas.Count;
                 Estudio.count = estudios.Count;
                 Pelicula.count = peliculas.Count;
+                Critica.count = criticas.Count;
             }
 
         }
@@ -141,6 +146,7 @@ namespace movies
         {
             List<Persona> people = new List<Persona>();
             List<Pelicula> movies = new List<Pelicula>();
+            List<Critica> reviews = new List<Critica>();
             Dictionary<String,String> atributos = new Dictionary<String, String>();
             int index = -1;
             if (e.button.Equals("Peliculas"))
@@ -165,8 +171,17 @@ namespace movies
                     if (pa.pelicula.id == peliculas[index].id)
                         people.Add(pa.productor);
                 }
+                foreach (Critica crit in criticas)
+                {
+                    if (crit.pelicula.id == peliculas[index].id)
+                        reviews.Add(crit);
+                }
+
+                View.ShowListCriticas();
                 View.UpdateElementsProfile(atributos);
+                View.shorterListProfile();
                 View.UpdateListProfile(people);
+                View.UpdateListCriticas(reviews);
             }
             else if (e.button.Equals("Estudios"))
             {
@@ -181,7 +196,9 @@ namespace movies
                     if (p.estudio.id == estudios[index].id)
                         movies.Add(p);
                 }
+                View.UnshowListCriticas();
                 View.UpdateElementsProfile(atributos);
+                View.largerListProfile();
                 View.UpdateListProfile(movies);
             }
             else 
@@ -208,19 +225,39 @@ namespace movies
                     if (p.director.id == personas[index].id)
                         movies.Add(p);
                 }
+                View.UnshowListCriticas();
                 View.UpdateElementsProfile(atributos);
+                View.largerListProfile();
                 View.UpdateListProfile(movies);
             }
            
             View.ShowPanelProfile();
         }
 
+        //Agregar Critica
+        public void AddCritica_OnAddCritica(object sender, DataEventArgs e)
+        {
+            int index = -1;
+            List<Critica> reviews = new List<Critica>();
+            foreach (Pelicula p in peliculas)
+                if (p.id == e.movie.id)
+                    index = peliculas.IndexOf(p);
+            criticas.Add(new Critica(e.emisor, e.mensaje, peliculas[index]));
+            foreach (Critica crit in criticas)
+            {
+                if (crit.pelicula.id == peliculas[index].id)
+                    reviews.Add(crit);
+            }
+            View.CleanListCriticas();
+            View.UpdateListCriticas(reviews);
+            View.CleanAddReview();
+        }
 
 
         //Grabar los datos antes de cerrar4447
         private void SaveDataBeforeClosing_OnClosingApp(object sender, DataEventArgs e)
         {
-            SaveData(personas, estudios,peliculas,peliculaActores, peliculaProductores);
+            SaveData(personas, estudios,peliculas,peliculaActores, peliculaProductores,criticas);
         }
 
         //Metodos de incializacion y serialize
@@ -241,6 +278,7 @@ namespace movies
             peliculas.Add(new Pelicula("Volando con Brad", personas[3], new DateTime(2018, 2, 5), "Una tarde volando con James", 1000000,estudios[0]));
             peliculas.Add(new Pelicula("Estudiando con Andres", personas[4], new DateTime(2017, 2, 5), "Una tarde des estudio con Kim", 1000000, estudios[1]));
             peliculas.Add(new Pelicula("Howard, Perez o Cea", personas[5], new DateTime(2018, 3, 5), "Carlos nos entrega una critica de Howardo", 1000000, estudios[2]));
+            criticas.Add(new Critica("El Critico", "Excelente para matar el tiempo", peliculas[0]));
             peliculaActores.Add(new PeliculaActor(peliculas[0], personas[0]));
             peliculaActores.Add(new PeliculaActor(peliculas[1], personas[1]));
             peliculaActores.Add(new PeliculaActor(peliculas[2], personas[2]));
@@ -252,7 +290,7 @@ namespace movies
             peliculaProductores.Add(new PeliculaProductor(peliculas[2], personas[8]));
         }
 
-        private static void SaveData(List<Persona> personas, List<Estudio> estudios, List<Pelicula> peliculas, List<PeliculaActor> peliculaActores, List<PeliculaProductor> peliculaProductores)
+        private static void SaveData(List<Persona> personas, List<Estudio> estudios, List<Pelicula> peliculas, List<PeliculaActor> peliculaActores, List<PeliculaProductor> peliculaProductores, List<Critica> criticas)
         {
             String fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Personas.txt");
             FileStream fs = new FileStream(fileName, FileMode.Create);
@@ -280,6 +318,11 @@ namespace movies
             formatter.Serialize(fs, peliculaProductores);
             fs.Close();
 
+            fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Criticas.txt");
+            fs = new FileStream(fileName, FileMode.Create);
+            formatter.Serialize(fs, criticas);
+            fs.Close();
+
 
         }
 
@@ -298,6 +341,10 @@ namespace movies
             File.Delete(fileName);
 
             fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Estudios.txt");
+            if (!File.Exists(fileName))
+            {
+                return false;
+            }
             fs = new FileStream(fileName, FileMode.Open);
             List<Estudio> est = formatter.Deserialize(fs) as List<Estudio>;
             foreach (Estudio e in est) estudios.Add(e);
@@ -305,6 +352,10 @@ namespace movies
             File.Delete(fileName);
 
             fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Peliculas.txt");
+            if (!File.Exists(fileName))
+            {
+                return false;
+            }
             fs = new FileStream(fileName, FileMode.Open);
             List<Pelicula> pel = formatter.Deserialize(fs) as List<Pelicula>;
             foreach (Pelicula pe in pel) peliculas.Add(pe);
@@ -312,6 +363,10 @@ namespace movies
             File.Delete(fileName);
 
             fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../PeliculaActores.txt");
+            if (!File.Exists(fileName))
+            {
+                return false;
+            }
             fs = new FileStream(fileName, FileMode.Open);
             List<PeliculaActor> pela = formatter.Deserialize(fs) as List<PeliculaActor>;
             foreach (PeliculaActor pa in pela) peliculaActores.Add(pa);
@@ -319,9 +374,24 @@ namespace movies
             File.Delete(fileName);
 
             fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../PeliculaProductores.txt");
+            if (!File.Exists(fileName))
+            {
+                return false;
+            }
             fs = new FileStream(fileName, FileMode.Open);
             List<PeliculaProductor> pelp = formatter.Deserialize(fs) as List<PeliculaProductor>;
             foreach (PeliculaProductor pp in pelp) peliculaProductores.Add(pp);
+            fs.Close();
+            File.Delete(fileName);
+
+            fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Criticas.txt");
+            if (!File.Exists(fileName))
+            {
+                return false;
+            }
+            fs = new FileStream(fileName, FileMode.Open);
+            List<Critica> crit = formatter.Deserialize(fs) as List<Critica>;
+            foreach (Critica cr in crit) criticas.Add(cr);
             fs.Close();
             File.Delete(fileName);
 
