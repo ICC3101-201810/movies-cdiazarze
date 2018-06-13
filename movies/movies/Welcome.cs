@@ -20,7 +20,7 @@ namespace movies
 
         private void Welcome_Load(object sender, EventArgs e)
         {
-            timer.Interval = 1000;
+            timer.Interval = 5000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
