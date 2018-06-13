@@ -1,4 +1,4 @@
 # movies-cdiazarze
 movies-cdiazarze created by GitHub Classroom
 ## Tarea Completa
-### La referencia a Modelos debe quitarse y volver a ser agregada. Luego recompilar. Esto porque puede que pierda la refencia a la biblioteca de clases al cambiar de pc. 
+### Si no encuntra la referencia de esamblado a Modelos y las Clases, se debe: Quitar la referencia a Modelos en movies, luego compilar la solucion, agregar nuevamente la referencia de Modelo.dll y compilar la solución para que tome la referencia. 
