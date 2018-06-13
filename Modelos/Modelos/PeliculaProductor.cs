@@ -7,8 +7,8 @@ namespace Modelos
     [Serializable]
     public class PeliculaProductor
     {
-        Pelicula pelicula { get; set; }
-        Persona productor { get; set; }
+        public Pelicula pelicula { get; set; }
+        public Persona productor { get; set; }
 
         public PeliculaProductor(Pelicula pelicula, Persona productor)
         {

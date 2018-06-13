@@ -16,8 +16,11 @@ namespace movies
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Form welcome = new Welcome();
             Form1 views = new Form1();
             Controller controlador = new Controller(views);
+            Application.Run(welcome);
+
             Application.Run(views);
         }
     }

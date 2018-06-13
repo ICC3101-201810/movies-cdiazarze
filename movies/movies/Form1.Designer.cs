@@ -28,43 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelInicio = new System.Windows.Forms.Panel();
-            this.searchBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonPeliculas = new System.Windows.Forms.Button();
-            this.buttonActores = new System.Windows.Forms.Button();
-            this.buttonDirectores = new System.Windows.Forms.Button();
-            this.buttonProductores = new System.Windows.Forms.Button();
-            this.listResultado = new System.Windows.Forms.ListBox();
+            this.panelSearch = new System.Windows.Forms.Panel();
             this.buttonEstudio = new System.Windows.Forms.Button();
-            this.panelInicio.SuspendLayout();
+            this.listResultado = new System.Windows.Forms.ListBox();
+            this.buttonProductores = new System.Windows.Forms.Button();
+            this.buttonDirectores = new System.Windows.Forms.Button();
+            this.buttonActores = new System.Windows.Forms.Button();
+            this.buttonPeliculas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.panelSearch.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panelInicio
+            // panelSearch
             // 
-            this.panelInicio.Controls.Add(this.buttonEstudio);
-            this.panelInicio.Controls.Add(this.listResultado);
-            this.panelInicio.Controls.Add(this.buttonProductores);
-            this.panelInicio.Controls.Add(this.buttonDirectores);
-            this.panelInicio.Controls.Add(this.buttonActores);
-            this.panelInicio.Controls.Add(this.buttonPeliculas);
-            this.panelInicio.Controls.Add(this.label1);
-            this.panelInicio.Controls.Add(this.searchBox);
-            this.panelInicio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInicio.Location = new System.Drawing.Point(0, 0);
-            this.panelInicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panelInicio.Name = "panelInicio";
-            this.panelInicio.Size = new System.Drawing.Size(782, 553);
-            this.panelInicio.TabIndex = 0;
+            this.panelSearch.Controls.Add(this.buttonEstudio);
+            this.panelSearch.Controls.Add(this.listResultado);
+            this.panelSearch.Controls.Add(this.buttonProductores);
+            this.panelSearch.Controls.Add(this.buttonDirectores);
+            this.panelSearch.Controls.Add(this.buttonActores);
+            this.panelSearch.Controls.Add(this.buttonPeliculas);
+            this.panelSearch.Controls.Add(this.label1);
+            this.panelSearch.Controls.Add(this.searchBox);
+            this.panelSearch.Location = new System.Drawing.Point(0, 0);
+            this.panelSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(993, 708);
+            this.panelSearch.TabIndex = 0;
             // 
-            // searchBox
+            // buttonEstudio
             // 
-            this.searchBox.Location = new System.Drawing.Point(15, 47);
-            this.searchBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(741, 32);
-            this.searchBox.TabIndex = 0;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            this.buttonEstudio.Location = new System.Drawing.Point(704, 630);
+            this.buttonEstudio.Name = "buttonEstudio";
+            this.buttonEstudio.Size = new System.Drawing.Size(146, 41);
+            this.buttonEstudio.TabIndex = 7;
+            this.buttonEstudio.Text = "Estudios";
+            this.buttonEstudio.UseVisualStyleBackColor = true;
+            // 
+            // listResultado
+            // 
+            this.listResultado.Font = new System.Drawing.Font("Calibri", 10F);
+            this.listResultado.FormattingEnabled = true;
+            this.listResultado.HorizontalScrollbar = true;
+            this.listResultado.ItemHeight = 21;
+            this.listResultado.Location = new System.Drawing.Point(15, 86);
+            this.listResultado.Name = "listResultado";
+            this.listResultado.Size = new System.Drawing.Size(956, 529);
+            this.listResultado.TabIndex = 6;
+            // 
+            // buttonProductores
+            // 
+            this.buttonProductores.Location = new System.Drawing.Point(551, 630);
+            this.buttonProductores.Name = "buttonProductores";
+            this.buttonProductores.Size = new System.Drawing.Size(146, 41);
+            this.buttonProductores.TabIndex = 5;
+            this.buttonProductores.Text = "Productores";
+            this.buttonProductores.UseVisualStyleBackColor = true;
+            // 
+            // buttonDirectores
+            // 
+            this.buttonDirectores.Location = new System.Drawing.Point(399, 630);
+            this.buttonDirectores.Name = "buttonDirectores";
+            this.buttonDirectores.Size = new System.Drawing.Size(146, 41);
+            this.buttonDirectores.TabIndex = 4;
+            this.buttonDirectores.Text = "Directores";
+            this.buttonDirectores.UseVisualStyleBackColor = true;
+            // 
+            // buttonActores
+            // 
+            this.buttonActores.Location = new System.Drawing.Point(247, 630);
+            this.buttonActores.Name = "buttonActores";
+            this.buttonActores.Size = new System.Drawing.Size(146, 41);
+            this.buttonActores.TabIndex = 3;
+            this.buttonActores.Text = "Actores";
+            this.buttonActores.UseVisualStyleBackColor = true;
+            // 
+            // buttonPeliculas
+            // 
+            this.buttonPeliculas.Location = new System.Drawing.Point(95, 630);
+            this.buttonPeliculas.Name = "buttonPeliculas";
+            this.buttonPeliculas.Size = new System.Drawing.Size(146, 41);
+            this.buttonPeliculas.TabIndex = 2;
+            this.buttonPeliculas.Text = "Peliculas";
+            this.buttonPeliculas.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -76,79 +122,35 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Search";
             // 
-            // buttonPeliculas
+            // searchBox
             // 
-            this.buttonPeliculas.Location = new System.Drawing.Point(15, 475);
-            this.buttonPeliculas.Name = "buttonPeliculas";
-            this.buttonPeliculas.Size = new System.Drawing.Size(146, 41);
-            this.buttonPeliculas.TabIndex = 2;
-            this.buttonPeliculas.Text = "Peliculas";
-            this.buttonPeliculas.UseVisualStyleBackColor = true;
-            // 
-            // buttonActores
-            // 
-            this.buttonActores.Location = new System.Drawing.Point(167, 475);
-            this.buttonActores.Name = "buttonActores";
-            this.buttonActores.Size = new System.Drawing.Size(146, 41);
-            this.buttonActores.TabIndex = 3;
-            this.buttonActores.Text = "Actores";
-            this.buttonActores.UseVisualStyleBackColor = true;
-            // 
-            // buttonDirectores
-            // 
-            this.buttonDirectores.Location = new System.Drawing.Point(319, 475);
-            this.buttonDirectores.Name = "buttonDirectores";
-            this.buttonDirectores.Size = new System.Drawing.Size(146, 41);
-            this.buttonDirectores.TabIndex = 4;
-            this.buttonDirectores.Text = "Directores";
-            this.buttonDirectores.UseVisualStyleBackColor = true;
-            // 
-            // buttonProductores
-            // 
-            this.buttonProductores.Location = new System.Drawing.Point(471, 475);
-            this.buttonProductores.Name = "buttonProductores";
-            this.buttonProductores.Size = new System.Drawing.Size(146, 41);
-            this.buttonProductores.TabIndex = 5;
-            this.buttonProductores.Text = "Productores";
-            this.buttonProductores.UseVisualStyleBackColor = true;
-            // 
-            // listResultado
-            // 
-            this.listResultado.FormattingEnabled = true;
-            this.listResultado.ItemHeight = 24;
-            this.listResultado.Location = new System.Drawing.Point(15, 86);
-            this.listResultado.Name = "listResultado";
-            this.listResultado.Size = new System.Drawing.Size(741, 364);
-            this.listResultado.TabIndex = 6;
-            // 
-            // buttonEstudio
-            // 
-            this.buttonEstudio.Location = new System.Drawing.Point(624, 475);
-            this.buttonEstudio.Name = "buttonEstudio";
-            this.buttonEstudio.Size = new System.Drawing.Size(146, 41);
-            this.buttonEstudio.TabIndex = 7;
-            this.buttonEstudio.Text = "Estudios";
-            this.buttonEstudio.UseVisualStyleBackColor = true;
+            this.searchBox.Location = new System.Drawing.Point(15, 47);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(956, 32);
+            this.searchBox.TabIndex = 0;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 553);
-            this.Controls.Add(this.panelInicio);
+            this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.Controls.Add(this.panelSearch);
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.panelInicio.ResumeLayout(false);
-            this.panelInicio.PerformLayout();
+            this.Load += new System.EventHandler(this.Form1_Load_1);
+            this.panelSearch.ResumeLayout(false);
+            this.panelSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelInicio;
+        private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.Button buttonEstudio;
         private System.Windows.Forms.ListBox listResultado;
         private System.Windows.Forms.Button buttonProductores;

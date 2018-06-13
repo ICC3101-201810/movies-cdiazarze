@@ -25,16 +25,16 @@ namespace movies
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load_1(object sender, EventArgs e)
         {
-            panels.Add("Inicio", panelInicio);
-            
+            panels.Add("Search", panelSearch);
             foreach (String s in panels.Keys)
-                if (!s.Equals("Inicio"))
+                if (!s.Equals("Search"))
                     panels[s].Visible = false;
             DataArgs.panels = panels;
         }
 
+        //Eventos
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             if (searchBox.Text.Length >= 3) { 
@@ -44,6 +44,40 @@ namespace movies
                     OnSearch(this, DataArgs);
                 }
             }
+        }
+
+        //Metodos
+
+        public void UpdateSearch(List<String> list)
+        {
+            CleanSearch();
+            int counter = 0;
+            if (list.Count > 0)
+            {
+                foreach (String element in list)
+                {
+                    if (counter <= 50)
+                    {
+                        if (listResultado.Items.Count > 0 && listResultado.Items[0].Equals("No existen resultados para el criterio de busqueda"))
+                        {
+                            listResultado.Items.Add(element);
+                            listResultado.Items.RemoveAt(0);
+                        }
+                        else
+                            listResultado.Items.Add(element);
+                        counter++;
+                    }
+                }
+            }
+            else NoResult();
+        }
+        public void NoResult()
+        {
+            listResultado.Items.Add("No existen resultados para el criterio de busqueda");
+        }
+        public void CleanSearch()
+        {
+            listResultado.Items.Clear();
         }
 
         //Metodos para confirmar cierre

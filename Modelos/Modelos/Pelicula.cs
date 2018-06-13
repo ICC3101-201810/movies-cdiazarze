@@ -7,12 +7,12 @@ namespace Modelos
     [Serializable]
     public class Pelicula
     {
-        String nombre { get; set; }
-        Persona director { get; set; }
-        DateTime fechaDeEstreno { get; set; }
-        String descripcion { get; set; }
-        Double presupuesto { get; set; }
-        Estudio estudio { get; set; }
+        public String nombre { get; set; }
+        public Persona director { get; set; }
+        public DateTime fechaDeEstreno { get; set; }
+        public String descripcion { get; set; }
+        public Double presupuesto { get; set; }
+        public Estudio estudio { get; set; }
 
         public Pelicula(String nombre, Persona director, DateTime fechaDeEstreno, String descripcion, Double presupuesto, Estudio estudio)
         {
@@ -22,6 +22,19 @@ namespace Modelos
             this.descripcion = descripcion;
             this.presupuesto = presupuesto;
             this.estudio = estudio;
+        }
+
+        int maxLength()
+        {
+            if (descripcion.Length > 30)
+                return 30;
+            else
+                return descripcion.Length;
+        }
+
+        public override string ToString()
+        {
+            return nombre + ", DATOS | Director: " + director.nombre+" "+ director.apellido + " | Fecha de Estreno: " + fechaDeEstreno.ToShortDateString()+ " | Descripcion: " + descripcion.Substring(0, maxLength()) + "... | Presupuesto: " + presupuesto+ " | Estudio: " + estudio.nombre;
         }
     }
 }

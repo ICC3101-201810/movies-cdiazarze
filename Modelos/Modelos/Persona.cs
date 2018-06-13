@@ -7,13 +7,13 @@ namespace Modelos
     [Serializable]
     public class Persona
     {
-        String nombre { get; set; }
-        String apellido { get; set; }
-        DateTime fechaDeNacimiento { get; set; }
-        String biografia { get; set; }
-        String ocupacion { get; set; }
+        public String nombre { get; set; }
+        public String apellido { get; set; }
+        public DateTime fechaDeNacimiento { get; set; }
+        public String biografia { get; set; }
+        public String ocupacion { get; set; }
 
-        public Persona(String nombre, String apellido, DateTime fechadeNacimiento, String biografia, String ocupacion)
+        public Persona(String nombre, String apellido, DateTime fechaDeNacimiento, String biografia, String ocupacion)
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -21,5 +21,19 @@ namespace Modelos
             this.biografia = biografia;
             this.ocupacion = ocupacion;
         }
+
+        int maxLength()
+        {
+            if (biografia.Length > 20)
+                return 20;
+            else
+                return biografia.Length;
+        }
+
+        public override string ToString()
+        {
+            return nombre + " " + apellido + ", DATOS | Fecha de Nacimiento: " + fechaDeNacimiento.ToShortDateString() + " | Ocupacion: " + ocupacion + " | Biografia: " + biografia.Substring(0,maxLength()) + "... |";
+        }
+
     }
 }

@@ -29,14 +29,67 @@ namespace movies
             View = views;
 
             View.OnClosingApp += SaveDataBeforeClosing_OnClosingApp;
+            View.OnSearch += SearchItems_OnSearch;
+
 
             if (!LoadData())
             {
                 InicializaUsuariosIniciales();
             }
 
+        }
 
+        //Busqueda
+        private void SearchItems_OnSearch(object sender, DataEventArgs e)
+        {
+            List<String> totalList = new List<String>();
+            List<Persona> people = new List<Persona>();
+            List<Estudio> studios = new List<Estudio>();
+            List<Pelicula> movies = new List<Pelicula>();
+            people = personas.Where(t =>
+                t.nombre.ToUpper().Contains(e.searchWord.ToUpper()) ||
+                t.apellido.ToUpper().Contains(e.searchWord.ToUpper()) ||
+                t.biografia.ToUpper().Contains(e.searchWord.ToUpper()) ||
+                t.ocupacion.ToUpper().Contains(e.searchWord.ToUpper()) ||
+                t.fechaDeNacimiento.ToShortDateString().Contains(e.searchWord.ToUpper()))
+            .ToList();
+            if (people.Count > 0) {
+                totalList.Add("-----Personas Encontradas-----");
+                foreach (Persona p in people)
+                    totalList.Add(p.ToString());
+            }
 
+            studios = estudios.Where(t =>
+            t.nombre.ToUpper().Contains(e.searchWord.ToUpper()) ||
+            t.direccion.ToUpper().Contains(e.searchWord.ToUpper()) ||
+            t.fechaDeApertura.ToShortDateString().ToUpper().Contains(e.searchWord.ToUpper()))
+            .ToList();
+
+            if (studios.Count > 0)
+            {
+                totalList.Add("-----Estudios Encontrados-----");
+                foreach (Estudio studio in studios)
+                    totalList.Add(studio.ToString());
+            }
+
+            movies = peliculas.Where(t =>
+            t.nombre.ToUpper().Contains(e.searchWord.ToUpper()) ||
+            t.director.nombre.ToUpper().Contains(e.searchWord.ToUpper()) ||
+            t.director.apellido.ToUpper().Contains(e.searchWord.ToUpper()) ||
+            t.fechaDeEstreno.ToShortDateString().ToUpper().Contains(e.searchWord.ToUpper()) ||
+            t.descripcion.ToUpper().Contains(e.searchWord.ToUpper()) ||
+            t.presupuesto.ToString().ToUpper().Contains(e.searchWord.ToUpper()) ||
+            t.estudio.nombre.ToUpper().Contains(e.searchWord.ToUpper()))
+            .ToList();
+
+            if (movies.Count > 0)
+            {
+                totalList.Add("-----Peliculas Encontradas-----");
+                foreach (Pelicula movie in movies)
+                    totalList.Add(movie.ToString());
+            }
+
+            View.UpdateSearch(totalList);
         }
 
         //Grabar los datos antes de cerrar4447
@@ -61,8 +114,8 @@ namespace movies
             estudios.Add(new Estudio("Pitts Howard", "Avenida Cea Howardo", new DateTime(1975, 2, 5)));
             estudios.Add(new Estudio("John Cena", "Brad Pitt", new DateTime(1982, 2, 5)));
             peliculas.Add(new Pelicula("Volando con Brad", personas[3], new DateTime(2018, 2, 5), "Una tarde volando con James", 1000000,estudios[0]));
-            peliculas.Add(new Pelicula("Volando con Brad", personas[4], new DateTime(2017, 2, 5), "Una tarde volando con James", 1000000, estudios[1]));
-            peliculas.Add(new Pelicula("Volando con Brad", personas[5], new DateTime(2018, 3, 5), "Una tarde volando con James", 1000000, estudios[2]));
+            peliculas.Add(new Pelicula("Estudiando con Andres", personas[4], new DateTime(2017, 2, 5), "Una tarde des estudio con Kim", 1000000, estudios[1]));
+            peliculas.Add(new Pelicula("Howard, Perez o Cea", personas[5], new DateTime(2018, 3, 5), "Carlos nos entrega una critica de Howardo", 1000000, estudios[2]));
             peliculaActores.Add(new PeliculaActor(peliculas[0], personas[0]));
             peliculaActores.Add(new PeliculaActor(peliculas[1], personas[1]));
             peliculaActores.Add(new PeliculaActor(peliculas[2], personas[2]));
