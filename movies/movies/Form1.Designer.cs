@@ -37,7 +37,12 @@
             this.buttonPeliculas = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.searchBox = new System.Windows.Forms.TextBox();
+            this.panelAfterButton = new System.Windows.Forms.Panel();
+            this.listAfterButton = new System.Windows.Forms.ListBox();
+            this.labelList = new System.Windows.Forms.Label();
+            this.buttonBackSearch = new System.Windows.Forms.Button();
             this.panelSearch.SuspendLayout();
+            this.panelAfterButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSearch
@@ -64,6 +69,7 @@
             this.buttonEstudio.TabIndex = 7;
             this.buttonEstudio.Text = "Estudios";
             this.buttonEstudio.UseVisualStyleBackColor = true;
+            this.buttonEstudio.Click += new System.EventHandler(this.buttonEstudio_Click);
             // 
             // listResultado
             // 
@@ -84,6 +90,7 @@
             this.buttonProductores.TabIndex = 5;
             this.buttonProductores.Text = "Productores";
             this.buttonProductores.UseVisualStyleBackColor = true;
+            this.buttonProductores.Click += new System.EventHandler(this.buttonProductores_Click);
             // 
             // buttonDirectores
             // 
@@ -93,6 +100,7 @@
             this.buttonDirectores.TabIndex = 4;
             this.buttonDirectores.Text = "Directores";
             this.buttonDirectores.UseVisualStyleBackColor = true;
+            this.buttonDirectores.Click += new System.EventHandler(this.buttonDirectores_Click);
             // 
             // buttonActores
             // 
@@ -102,6 +110,7 @@
             this.buttonActores.TabIndex = 3;
             this.buttonActores.Text = "Actores";
             this.buttonActores.UseVisualStyleBackColor = true;
+            this.buttonActores.Click += new System.EventHandler(this.buttonActores_Click);
             // 
             // buttonPeliculas
             // 
@@ -111,6 +120,7 @@
             this.buttonPeliculas.TabIndex = 2;
             this.buttonPeliculas.Text = "Peliculas";
             this.buttonPeliculas.UseVisualStyleBackColor = true;
+            this.buttonPeliculas.Click += new System.EventHandler(this.buttonPeliculas_Click);
             // 
             // label1
             // 
@@ -131,11 +141,54 @@
             this.searchBox.TabIndex = 0;
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
+            // panelAfterButton
+            // 
+            this.panelAfterButton.Controls.Add(this.buttonBackSearch);
+            this.panelAfterButton.Controls.Add(this.listAfterButton);
+            this.panelAfterButton.Controls.Add(this.labelList);
+            this.panelAfterButton.Location = new System.Drawing.Point(1019, 0);
+            this.panelAfterButton.Margin = new System.Windows.Forms.Padding(4);
+            this.panelAfterButton.Name = "panelAfterButton";
+            this.panelAfterButton.Size = new System.Drawing.Size(993, 708);
+            this.panelAfterButton.TabIndex = 1;
+            // 
+            // listAfterButton
+            // 
+            this.listAfterButton.Font = new System.Drawing.Font("Calibri", 10F);
+            this.listAfterButton.FormattingEnabled = true;
+            this.listAfterButton.HorizontalScrollbar = true;
+            this.listAfterButton.ItemHeight = 21;
+            this.listAfterButton.Location = new System.Drawing.Point(15, 44);
+            this.listAfterButton.Name = "listAfterButton";
+            this.listAfterButton.Size = new System.Drawing.Size(956, 571);
+            this.listAfterButton.TabIndex = 6;
+            // 
+            // labelList
+            // 
+            this.labelList.AutoSize = true;
+            this.labelList.Location = new System.Drawing.Point(11, 17);
+            this.labelList.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelList.Name = "labelList";
+            this.labelList.Size = new System.Drawing.Size(65, 24);
+            this.labelList.TabIndex = 1;
+            this.labelList.Text = "Search";
+            // 
+            // buttonBackSearch
+            // 
+            this.buttonBackSearch.Location = new System.Drawing.Point(15, 630);
+            this.buttonBackSearch.Name = "buttonBackSearch";
+            this.buttonBackSearch.Size = new System.Drawing.Size(146, 41);
+            this.buttonBackSearch.TabIndex = 7;
+            this.buttonBackSearch.Text = "Volver";
+            this.buttonBackSearch.UseVisualStyleBackColor = true;
+            this.buttonBackSearch.Click += new System.EventHandler(this.buttonBackSearch_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.ClientSize = new System.Drawing.Size(2257, 721);
+            this.Controls.Add(this.panelAfterButton);
             this.Controls.Add(this.panelSearch);
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -144,6 +197,8 @@
             this.Load += new System.EventHandler(this.Form1_Load_1);
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
+            this.panelAfterButton.ResumeLayout(false);
+            this.panelAfterButton.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -159,6 +214,10 @@
         private System.Windows.Forms.Button buttonPeliculas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Panel panelAfterButton;
+        private System.Windows.Forms.ListBox listAfterButton;
+        private System.Windows.Forms.Label labelList;
+        private System.Windows.Forms.Button buttonBackSearch;
     }
 }
 

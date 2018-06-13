@@ -17,6 +17,7 @@ namespace movies
         Dictionary<String, Panel> panels = new Dictionary<String, Panel>();
 
         public event EventHandler<DataEventArgs> OnSearch;
+        public event EventHandler<DataEventArgs> OnButtonHit;
         public event EventHandler<DataEventArgs> OnClosingApp;
 
 
@@ -28,6 +29,7 @@ namespace movies
         private void Form1_Load_1(object sender, EventArgs e)
         {
             panels.Add("Search", panelSearch);
+            panels.Add("AfterButton", panelAfterButton);
             foreach (String s in panels.Keys)
                 if (!s.Equals("Search"))
                     panels[s].Visible = false;
@@ -43,6 +45,51 @@ namespace movies
                     DataArgs.searchWord = searchBox.Text;
                     OnSearch(this, DataArgs);
                 }
+            }
+        }
+
+        private void buttonPeliculas_Click(object sender, EventArgs e)
+        {
+            DataArgs.button = "Peliculas";
+            if (OnButtonHit != null)
+            {
+                OnButtonHit(this, DataArgs);
+            }
+        }
+
+        private void buttonActores_Click(object sender, EventArgs e)
+        {
+            DataArgs.button = "Actores";
+            if (OnButtonHit != null)
+            {
+                OnButtonHit(this, DataArgs);
+            }
+        }
+
+        private void buttonDirectores_Click(object sender, EventArgs e)
+        {
+            DataArgs.button = "Directores";
+            if (OnButtonHit != null)
+            {
+                OnButtonHit(this, DataArgs);
+            }
+        }
+
+        private void buttonProductores_Click(object sender, EventArgs e)
+        {
+            DataArgs.button = "Productores";
+            if (OnButtonHit != null)
+            {
+                OnButtonHit(this, DataArgs);
+            }
+        }
+
+        private void buttonEstudio_Click(object sender, EventArgs e)
+        {
+            DataArgs.button = "Estudios";
+            if (OnButtonHit != null)
+            {
+                OnButtonHit(this, DataArgs);
             }
         }
 
@@ -80,6 +127,41 @@ namespace movies
             listResultado.Items.Clear();
         }
 
+        //Se utiliza metodo generico para todos las listas apretadas por los botones
+        public void UpdateListAfterButton<T>(List<T> list)
+        {
+            CleanListAfterButton();
+            labelList.Text=DataArgs.button;
+            if (list.Count > 0)
+            {
+                foreach (T element in list)
+                {
+                    if (listAfterButton.Items.Count > 0 && listAfterButton.Items[0].Equals("No existen resultados para el criterio de busqueda"))
+                    {
+                        listAfterButton.Items.Add(element);
+                        listAfterButton.Items.RemoveAt(0);
+                    }
+                    else
+                        listAfterButton.Items.Add(element);
+                }
+            }
+            else NoResultListAfterButton();
+        }
+        public void NoResultListAfterButton()
+        {
+            listResultado.Items.Add("No existen registros");
+        }
+        public void CleanListAfterButton()
+        {
+            listAfterButton.Items.Clear();
+        }
+        public void ShowPanelAfterButton()
+        {
+            panelAfterButton.Visible = true;
+            panelSearch.Visible = false;
+        }
+
+
         //Metodos para confirmar cierre
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -95,6 +177,16 @@ namespace movies
         {
             if (MessageBox.Show("Are you sure you want to close?", "Close", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
                 e.Cancel = true;
+        }
+
+        private void buttonBackSearch_Click(object sender, EventArgs e)
+        {
+            searchBox.Clear();
+            CleanSearch();
+            panelSearch.Visible = true;
+            panelAfterButton.Visible = false;
+            CleanListAfterButton();
+
         }
     }
 }

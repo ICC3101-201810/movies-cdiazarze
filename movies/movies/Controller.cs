@@ -30,6 +30,7 @@ namespace movies
 
             View.OnClosingApp += SaveDataBeforeClosing_OnClosingApp;
             View.OnSearch += SearchItems_OnSearch;
+            View.OnButtonHit += LoadElements_OnButtonHit;
 
 
             if (!LoadData())
@@ -91,9 +92,45 @@ namespace movies
 
             View.UpdateSearch(totalList);
         }
+        //Seleccionar un Boton
 
-        //Grabar los datos antes de cerrar4447
-        private void SaveDataBeforeClosing_OnClosingApp(object sender, DataEventArgs e)
+        private void LoadElements_OnButtonHit(object sender, DataEventArgs e)
+        {
+            List<Persona> people = new List<Persona>();
+            if (e.button.Equals("Peliculas"))
+            {
+                View.UpdateListAfterButton(peliculas);
+            }
+            if (e.button.Equals("Estudios"))
+            {
+                View.UpdateListAfterButton(estudios);
+            }
+            if (e.button.Equals("Actores"))
+            {
+                foreach (Persona p in personas)
+                    if (p.ocupacion.Equals("actor"))
+                        people.Add(p);
+                View.UpdateListAfterButton(people);
+            }
+            if (e.button.Equals("Directores"))
+            {
+                foreach (Persona p in personas)
+                    if (p.ocupacion.Equals("director"))
+                        people.Add(p);
+                View.UpdateListAfterButton(people);
+            }
+            if (e.button.Equals("Productores"))
+            {
+                foreach (Persona p in personas)
+                    if (p.ocupacion.Equals("productor"))
+                        people.Add(p);
+                View.UpdateListAfterButton(people);
+            }
+            View.ShowPanelAfterButton();
+        }
+
+            //Grabar los datos antes de cerrar4447
+            private void SaveDataBeforeClosing_OnClosingApp(object sender, DataEventArgs e)
         {
             SaveData(personas, estudios,peliculas,peliculaActores, peliculaProductores);
         }

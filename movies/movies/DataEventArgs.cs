@@ -11,5 +11,6 @@ namespace movies
     {
         public Dictionary<String, Panel> panels { get; set; }
         public String searchWord { get; set; }
+        public String button { get; set; }
     }
 }
