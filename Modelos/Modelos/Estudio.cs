@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Modelos
 {
@@ -10,12 +11,15 @@ namespace Modelos
         public String nombre { get; set; }
         public String direccion { get; set; }
         public DateTime fechaDeApertura { get; set; }
+        public static int count = 0;
+        public int id { get; }
 
         public Estudio(String nombre, String direccion, DateTime fechaDeApertura)
         {
             this.nombre = nombre;
             this.direccion = direccion;
             this.fechaDeApertura = fechaDeApertura;
+            this.id = Interlocked.Increment(ref count);
         }
 
         int maxLength()

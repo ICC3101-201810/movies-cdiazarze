@@ -31,11 +31,18 @@ namespace movies
             View.OnClosingApp += SaveDataBeforeClosing_OnClosingApp;
             View.OnSearch += SearchItems_OnSearch;
             View.OnButtonHit += LoadElements_OnButtonHit;
+            View.OnSelection += LoadProfile_OnSelection;
 
 
             if (!LoadData())
             {
                 InicializaUsuariosIniciales();
+            }
+            else
+            {
+                Persona.count = personas.Count;
+                Estudio.count = estudios.Count;
+                Pelicula.count = peliculas.Count;
             }
 
         }
@@ -128,9 +135,90 @@ namespace movies
             }
             View.ShowPanelAfterButton();
         }
+        //Seleccionar un elemento
 
-            //Grabar los datos antes de cerrar4447
-            private void SaveDataBeforeClosing_OnClosingApp(object sender, DataEventArgs e)
+        private void LoadProfile_OnSelection(object sender, DataEventArgs e)
+        {
+            List<Persona> people = new List<Persona>();
+            List<Pelicula> movies = new List<Pelicula>();
+            Dictionary<String,String> atributos = new Dictionary<String, String>();
+            int index = -1;
+            if (e.button.Equals("Peliculas"))
+            {
+                foreach (Pelicula p in peliculas)
+                    if (p.id == e.movie.id)
+                        index = peliculas.IndexOf(p);
+                atributos.Add("Nombre", peliculas[index].nombre);
+                atributos.Add("Director", String.Concat(peliculas[index].director.nombre," ", peliculas[index].director.apellido));
+                atributos.Add("Estreno", peliculas[index].fechaDeEstreno.ToShortDateString());
+                atributos.Add("Descripcion", peliculas[index].descripcion);
+                atributos.Add("Presupuesto", peliculas[index].presupuesto.ToString());
+                atributos.Add("Estudio", peliculas[index].estudio.nombre);
+
+                foreach(PeliculaActor pa in peliculaActores)
+                {
+                    if (pa.pelicula.id == peliculas[index].id)
+                        people.Add(pa.actor);
+                }
+                foreach (PeliculaProductor pa in peliculaProductores)
+                {
+                    if (pa.pelicula.id == peliculas[index].id)
+                        people.Add(pa.productor);
+                }
+                View.UpdateElementsProfile(atributos);
+                View.UpdateListProfile(people);
+            }
+            else if (e.button.Equals("Estudios"))
+            {
+                foreach (Estudio studio in estudios)
+                    if (studio.id == e.studio.id)
+                        index = estudios.IndexOf(studio);
+                atributos.Add("Nombre", estudios[index].nombre);
+                atributos.Add("Direccion", estudios[index].direccion);
+                atributos.Add("Apertura", estudios[index].fechaDeApertura.ToShortDateString());
+                foreach (Pelicula p in peliculas)
+                {
+                    if (p.estudio.id == estudios[index].id)
+                        movies.Add(p);
+                }
+                View.UpdateElementsProfile(atributos);
+                View.UpdateListProfile(movies);
+            }
+            else 
+            {
+                foreach (Persona person in personas)
+                    if (person.id == e.person.id)
+                        index = personas.IndexOf(person);
+                atributos.Add("Nombre", String.Concat(personas[index].nombre, " ", personas[index].apellido));
+                atributos.Add("Fecha de Nacimiento", personas[index].fechaDeNacimiento.ToShortDateString());
+                atributos.Add("Ocupacion", personas[index].ocupacion);
+                atributos.Add("Biografia", personas[index].biografia);
+                foreach (PeliculaActor pa in peliculaActores)
+                {
+                    if (pa.actor.id == personas[index].id)
+                        movies.Add(pa.pelicula);
+                }
+                foreach (PeliculaProductor pa in peliculaProductores)
+                {
+                    if (pa.productor.id == personas[index].id)
+                        movies.Add(pa.pelicula);
+                }
+                foreach (Pelicula p in peliculas)
+                {
+                    if (p.director.id == personas[index].id)
+                        movies.Add(p);
+                }
+                View.UpdateElementsProfile(atributos);
+                View.UpdateListProfile(movies);
+            }
+           
+            View.ShowPanelProfile();
+        }
+
+
+
+        //Grabar los datos antes de cerrar4447
+        private void SaveDataBeforeClosing_OnClosingApp(object sender, DataEventArgs e)
         {
             SaveData(personas, estudios,peliculas,peliculaActores, peliculaProductores);
         }

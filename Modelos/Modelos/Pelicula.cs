@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Modelos
 {
@@ -13,6 +14,8 @@ namespace Modelos
         public String descripcion { get; set; }
         public Double presupuesto { get; set; }
         public Estudio estudio { get; set; }
+        public static int count = 0;
+        public int id { get; }
 
         public Pelicula(String nombre, Persona director, DateTime fechaDeEstreno, String descripcion, Double presupuesto, Estudio estudio)
         {
@@ -22,6 +25,7 @@ namespace Modelos
             this.descripcion = descripcion;
             this.presupuesto = presupuesto;
             this.estudio = estudio;
+            this.id = Interlocked.Increment(ref count);
         }
 
         int maxLength()

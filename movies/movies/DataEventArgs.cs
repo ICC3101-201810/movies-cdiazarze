@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,8 @@ namespace movies
         public Dictionary<String, Panel> panels { get; set; }
         public String searchWord { get; set; }
         public String button { get; set; }
+        public Pelicula movie { get; set; }
+        public Persona person { get; set; }
+        public Estudio studio { get; set; }
     }
 }

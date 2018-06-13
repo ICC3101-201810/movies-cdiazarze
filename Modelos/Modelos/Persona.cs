@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Modelos
 {
@@ -12,6 +13,8 @@ namespace Modelos
         public DateTime fechaDeNacimiento { get; set; }
         public String biografia { get; set; }
         public String ocupacion { get; set; }
+        public static int count = 0;
+        public int id { get;  }
 
         public Persona(String nombre, String apellido, DateTime fechaDeNacimiento, String biografia, String ocupacion)
         {
@@ -20,6 +23,7 @@ namespace Modelos
             this.fechaDeNacimiento = fechaDeNacimiento;
             this.biografia = biografia;
             this.ocupacion = ocupacion;
+            this.id = Interlocked.Increment(ref count);
         }
 
         int maxLength()
